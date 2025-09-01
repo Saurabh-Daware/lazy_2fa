@@ -29,6 +29,7 @@ class OtpEntry {
       length: 6,
       interval: 30,
       algorithm: Algorithm.SHA1,
+      isGoogle: true,
     );
   }
 }
@@ -251,16 +252,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 15),
           SizedBox(
-            width: 15,
-            height: 15,
+            width: 10,
+            height: 10,
             child: CircularProgressIndicator(
-              value: remaining / 30,
-              strokeWidth: 20,
-              backgroundColor: Colors.grey.shade300,
+              value: 1 - (remaining / 30),
+              strokeWidth: 12,
+              backgroundColor: remaining > 5 ? Colors.blue : Colors.red,
               valueColor: AlwaysStoppedAnimation<Color>(
-                remaining > 5 ? Colors.blue : Colors.red,
+                ThemeData.light().scaffoldBackgroundColor,
               ),
             ),
           ),
